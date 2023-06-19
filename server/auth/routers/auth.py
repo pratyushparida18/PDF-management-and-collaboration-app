@@ -19,4 +19,8 @@ async def login_route(email: str, password: str):
 async def reset_password_router(email: str, password: str):
     return await reset_password(email, password)
 
+@router.get("/")
+async def test():
+    return {"message":"Hello World"}
+
 
