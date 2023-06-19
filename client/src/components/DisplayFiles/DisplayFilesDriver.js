@@ -93,7 +93,6 @@ const FilesTable = ({ email }) => {
   };
 
   const handleInviteUser = () => {
-    
     axios
       .get(`https://pdf-managementapp.onrender.com/preview/?file_id=${currentFile.file_id}`, {
         responseType: "blob",
@@ -102,47 +101,47 @@ const FilesTable = ({ email }) => {
         console.log("currentFile=", currentFile);
         const file = new Blob([response.data], { type: "application/pdf" });
         const fileURL = URL.createObjectURL(file);
-        console.log("fileURL=",fileURL);
+        console.log("fileURL=", fileURL);
         const uniqueId = uuidv4();
         const inviteLink = fileURL + "?invite=" + uniqueId;
-        console.log("inviteLink=",inviteLink);
-        () => {setInviteURL(inviteLink);}
-        console.log("inviteURL=",inviteURL);
-        console.log("uniqueId=",uniqueId);
+        console.log("inviteLink=", inviteLink);
+        setInviteURL(inviteLink);
+        console.log("inviteURL=", inviteURL);
+        console.log("uniqueId=", uniqueId);
+  
+        // Pass inviteURL to invitations route
+        axios
+          .put(
+            `https://pdf-managementapp.onrender.com/invitations?inviteEmail=${inviteEmail}&inviteURL=${inviteLink}&filename=${currentFile.filename}&sender_email=${email}&file_id=${currentFile.file_id}`
+          )
+          .then((response) => {
+            console.log(response.data.message);
+          })
+          .catch((error) => {
+            console.error("Error updating invitations:", error);
+          });
+  
+        // Pass inviteURL to uniqueIdCheck route
+        axios
+          .put(
+            `https://pdf-managementapp.onrender.com/uniqueIdCheck?inviteEmail=${inviteEmail}&inviteURL=${inviteLink}`
+          )
+          .then((response) => {
+            console.log(response.data.message);
+          })
+          .catch((error) => {
+            console.error("Error updating record:", error);
+          });
       })
       .catch((error) => {
         console.error("Error fetching invite link:", error);
       });
-      
-
-    axios
-      .put(
-        `https://pdf-managementapp.onrender.com/invitations?inviteEmail=${inviteEmail}&inviteURL=${inviteURL}&filename=${currentFile.filename}&sender_email=${email}&file_id=${currentFile.file_id}`
-      )
-      .then((response) => {
-        console.log(response.data.message);
-      })
-      .catch((error) => {
-        console.error("Error updating invitations:", error);
-      });
-
-      console.log(inviteURL);
-    axios
-      .put(
-        `https://pdf-managementapp.onrender.com/uniqueIdCheck?inviteEmail=${inviteEmail}&inviteURL=${inviteURL}`
-      )
-      .then((response) => {
-        console.log(response.data.message);
-      })
-      .catch((error) => {
-        console.error("Error updating record:", error);
-      });
-
+  
     // Clear the invite email input field
     setInviteEmail("");
     setShowInviteSection(false);
   };
-
+  
   // CSS styles as a JavaScript object
   const popupStyles = {
     popup: {
