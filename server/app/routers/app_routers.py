@@ -23,12 +23,12 @@ async def get_file_preview_router(file_id: str):
     return await get_file_preview(file_id)
 
 
-@router.put("/invitations")
+@router.post("/invitations")
 async def update_invitations_router(inviteEmail: str, inviteURL: str, filename: str,sender_email: str,file_id: str):
     return await update_invitations(inviteEmail, inviteURL, filename,sender_email,file_id)
 
 
-@router.put("/uniqueIdCheck")
+@router.post("/uniqueIdCheck")
 async def uniqueIdCheck_router(inviteEmail: str, inviteURL: str):
     return await uniqueIdCheck(inviteEmail,inviteURL)
 

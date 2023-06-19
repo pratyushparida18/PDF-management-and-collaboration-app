@@ -113,7 +113,7 @@ const FilesTable = ({ email }) => {
       
 
     axios
-      .put(
+      .post(
         `https://pdf-managementapp.onrender.com/invitations?inviteEmail=${inviteEmail}&inviteURL=${inviteURL}&filename=${currentFile.filename}&sender_email=${email}&file_id=${currentFile.file_id}`
       )
       .then((response) => {
@@ -125,7 +125,7 @@ const FilesTable = ({ email }) => {
 
       console.log(inviteURL);
     axios
-      .put(
+      .post(
         `https://pdf-managementapp.onrender.com/uniqueIdCheck?inviteEmail=${inviteEmail}&inviteURL=${inviteURL}`
       )
       .then((response) => {
