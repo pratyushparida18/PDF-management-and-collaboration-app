@@ -54,6 +54,7 @@ kiwisolver
 langcodes
 lazy_loader
 libclang
+matplotlib
 Markdown
 MarkupSafe
 metric-visualizer
