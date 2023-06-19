@@ -3,6 +3,10 @@
 Link to the app:
 ```https://pdf-management-and-collaboration-app.vercel.app/```
 
+## Description
+
+This app serves as a platform for storing and viewing PDF files through a user-friendly dashboard. It provides the functionality to share links with others, enabling them to access and view the PDF files. Additionally, users can invite others to collaborate by granting them access to view and add comments to the PDF files.
+
 ## Platforms used for deployment
 
 - Frontend: vercel
