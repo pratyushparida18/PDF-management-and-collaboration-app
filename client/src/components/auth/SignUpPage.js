@@ -4,7 +4,7 @@ import axios from 'axios';
 import './styles/SignUpPageStyles.css';
 
 
-const API_BASE_URL = 'http://localhost:8000'; // Replace with your FastAPI backend URL
+const API_BASE_URL = 'https://pdf-managementapp.onrender.com'; // Replace with your FastAPI backend URL
 
 const SignUpPage = ({ setLoggedIn }) => {
   const navigate = useNavigate();

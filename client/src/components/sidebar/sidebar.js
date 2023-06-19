@@ -11,14 +11,14 @@ const Sidebar = ({ email }) => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:8000/getInvitations/${email}?email=${email}`)
+      .get(`https://pdf-managementapp.onrender.com/getInvitations/${email}?email=${email}`)
       .then((response) => setInvitations(response.data))
       .catch((error) => console.error(error));
   }, [email]);
 
   const handleInviteClick = (file_id) => {
     axios
-      .get(`http://localhost:8000/preview/?file_id=${file_id}`, {
+      .get(`https://pdf-managementapp.onrender.com/preview/?file_id=${file_id}`, {
         responseType: 'blob',
       })
       .then((response) => {
@@ -34,7 +34,7 @@ const Sidebar = ({ email }) => {
   const handleSubmit = (invitation, comment) => {
     axios
       .post(
-        `http://localhost:8000/save_comment?email=${email}&comment=${comment}&filename=${invitation.filename}`
+        `https://pdf-managementapp.onrender.com/save_comment?email=${email}&comment=${comment}&filename=${invitation.filename}`
       )
       .then((response) => {
         console.log(response.data);

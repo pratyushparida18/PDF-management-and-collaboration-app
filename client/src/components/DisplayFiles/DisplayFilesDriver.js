@@ -22,7 +22,7 @@ const FilesTable = ({ email }) => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:8000/getfiles?email=${email}`)
+      .get(`https://pdf-managementapp.onrender.com/getfiles?email=${email}`)
       .then((response) => {
         setFiles(response.data.files);
       })
@@ -40,7 +40,7 @@ const FilesTable = ({ email }) => {
   const handleSearch = () => {
     axios
       .get(
-        `http://localhost:8000/singleFileData?filename=${searchText}&email=${email}`
+        `https://pdf-managementapp.onrender.com/singleFileData?filename=${searchText}&email=${email}`
       )
       .then((response) => {
         setSearchResults(response.data.comments);
@@ -53,7 +53,7 @@ const FilesTable = ({ email }) => {
 
   const handlePreviewClick = (fileId) => {
     axios
-      .get(`http://localhost:8000/preview/?file_id=${fileId}`, {
+      .get(`https://pdf-managementapp.onrender.com/preview/?file_id=${fileId}`, {
         responseType: "blob",
       })
       .then((response) => {
@@ -68,7 +68,7 @@ const FilesTable = ({ email }) => {
 
   const handleShareClick = (fileId) => {
     axios
-      .get(`http://localhost:8000/preview/?file_id=${fileId}`, {
+      .get(`https://pdf-managementapp.onrender.com/preview/?file_id=${fileId}`, {
         responseType: "blob",
       })
       .then((response) => {
@@ -95,7 +95,7 @@ const FilesTable = ({ email }) => {
   const handleInviteUser = () => {
     
     axios
-      .get(`http://localhost:8000/preview/?file_id=${currentFile.file_id}`, {
+      .get(`https://pdf-managementapp.onrender.com/preview/?file_id=${currentFile.file_id}`, {
         responseType: "blob",
       })
       .then((response) => {
@@ -114,7 +114,7 @@ const FilesTable = ({ email }) => {
 
     axios
       .put(
-        `http://localhost:8000/invitations?inviteEmail=${inviteEmail}&inviteURL=${inviteURL}&filename=${currentFile.filename}&sender_email=${email}&file_id=${currentFile.file_id}`
+        `https://pdf-managementapp.onrender.com/invitations?inviteEmail=${inviteEmail}&inviteURL=${inviteURL}&filename=${currentFile.filename}&sender_email=${email}&file_id=${currentFile.file_id}`
       )
       .then((response) => {
         console.log(response.data.message);
@@ -126,7 +126,7 @@ const FilesTable = ({ email }) => {
       console.log(inviteURL);
     axios
       .put(
-        `http://localhost:8000/uniqueIdCheck?inviteEmail=${inviteEmail}&inviteURL=${inviteURL}`
+        `https://pdf-managementapp.onrender.com/uniqueIdCheck?inviteEmail=${inviteEmail}&inviteURL=${inviteURL}`
       )
       .then((response) => {
         console.log(response.data.message);

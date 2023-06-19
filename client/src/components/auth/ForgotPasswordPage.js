@@ -4,7 +4,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import './styles/ForgotPasswordPageStyles.css';
 
 
-const API_BASE_URL = 'http://localhost:8000'; // Replace with your FastAPI backend URL
+const API_BASE_URL = 'https://pdf-managementapp.onrender.com'; // Replace with your FastAPI backend URL
 
 const ForgotPasswordPage = () => {
   const [email, setEmail] = useState('');

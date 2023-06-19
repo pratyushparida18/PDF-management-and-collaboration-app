@@ -15,7 +15,7 @@ const FileUpload = ({ email }) => {
     formData.append('file', selectedFile);
 
     try {
-      const response = await axios.post(`http://localhost:8000/upload/${email}`, formData, {
+      const response = await axios.post(`https://pdf-managementapp.onrender.com/upload/${email}`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
