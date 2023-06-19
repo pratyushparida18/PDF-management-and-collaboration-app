@@ -1,0 +1,120 @@
+.sidebar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 350px;
+  height: 100vh;
+  background-color: #f0f0f0;
+  padding: 20px;
+  overflow-y: auto;
+  background-color: #009b89;
+  transition: width 0.3s ease;
+}
+
+.sidebar h3 {
+  color: rgba(255, 255, 255, 0.909);
+  text-align: center;
+}
+
+.sidebar a {
+  font-weight: 700;
+  color: rgb(0, 0, 181);
+}
+
+.sidebar button {
+  margin: 0 30px;
+  margin-top: 20px;
+  background-color: #73f9a4;
+  border-radius: 100px;
+  box-shadow: rgba(44, 187, 99, .2) 0 -25px 18px -14px inset, rgba(44, 187, 99, .15) 0 1px 2px, rgba(44, 187, 99, .15) 0 2px 4px, rgba(44, 187, 99, .15) 0 4px 8px, rgba(44, 187, 99, .15) 0 8px 16px, rgba(44, 187, 99, .15) 0 16px 32px;
+  color: green;
+  cursor: pointer;
+  display: inline-block;
+  font-family: CerebriSans-Regular, -apple-system, system-ui, Roboto, sans-serif;
+  padding: 11px 50px;
+  text-align: center;
+  text-decoration: none;
+  transition: all 250ms;
+  border: 0;
+  font-size: 16px;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  margin: 0 auto;
+  display: block;
+}
+
+.sidebar button:hover {
+  box-shadow: rgba(44, 187, 99, .35) 0 -25px 18px -14px inset, rgba(44, 187, 99, .25) 0 1px 2px, rgba(44, 187, 99, .25) 0 2px 4px, rgba(44, 187, 99, .25) 0 4px 8px, rgba(44, 187, 99, .25) 0 8px 16px, rgba(44, 187, 99, .25) 0 16px 32px;
+  transform: scale(1.05) rotate(-1deg);
+}
+
+.item-container {
+  background-color: rgba(148, 210, 231, 0.189);
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  margin-bottom: 4%;
+}
+
+.item-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 250px;
+    height: 100vh;
+    padding: 10px;
+    overflow-y: auto;
+  }
+
+  .sidebar h3 {
+    font-size: 13px;
+  }
+
+  .sidebar a{
+    font-size: 10px;
+  }
+
+  /* .sidebar textarea {
+    height: 50px;  
+  } */
+
+  .sidebar button {
+    margin: 0;
+    margin-top: 10px;
+    padding: 5px 20px;
+    margin-left: 70px;
+  }
+
+  .item-container {
+    margin-bottom: 6%;
+  }
+}
+
+@media (max-width: 480px) {
+  .sidebar {
+    width: 150px;
+    height: 100vh;
+    overflow-y: auto;
+  }
+
+  .sidebar h3 {
+    font-size: 10px;
+  }
+
+  .sidebar a{
+    font-size: 7px;
+  }
+
+  
+  .sidebar button {
+    margin: 0;
+    margin-top: 10px;
+    padding: 3px 10px;
+    margin-left: 30px;
+  }
+}
