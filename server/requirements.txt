@@ -1,5 +1,6 @@
 absl-py
 aiohttp
+scipy
 aiosignal
 anyio
 appdirs
