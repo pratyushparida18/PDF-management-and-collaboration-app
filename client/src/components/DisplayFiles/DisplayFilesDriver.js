@@ -106,7 +106,7 @@ const FilesTable = ({ email }) => {
         const uniqueId = uuidv4();
         const inviteLink = fileURL + "?invite=" + uniqueId;
         console.log("inviteLink=",inviteLink);
-        setInviteURL(inviteLink);
+        () => {setInviteURL(inviteLink);}
         console.log("inviteURL=",inviteURL);
         console.log("uniqueId=",uniqueId);
       })
