@@ -84,7 +84,7 @@ async def singleFileData(filename: str, email: str):
     )
     if file_document and "files" in file_document:
         comments = file_document["files"][0].get("comments", [])
-        print(JSONResponse(content={"comments": comments}))
+        print({"comments": comments})
         return JSONResponse(content={"comments": comments})
     else:
         return JSONResponse(content={"comments": []})
