@@ -21,7 +21,9 @@ Link to the app:
 1. Browse to the `client` folder.
 
 2. Run the following command in the command line:
-```npm start```
+```bash
+npm start
+```
 
 This will start the frontend of the app.
 
@@ -34,7 +36,12 @@ This will start the frontend of the app.
 3. Activate your Python virtual environment.
 
 4. Run the following command in the command line:
-```python -m uvicorn main:app --reload```
+```bash
+python -m uvicorn main:app --reload
+```
 
 This will start the backend of the app.
+
+
+##Details of the routes present
 
