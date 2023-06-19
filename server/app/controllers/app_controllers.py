@@ -132,6 +132,8 @@ async def update_invitations(inviteEmail: str, inviteURL: str, filename: str,sen
                 {"$set": {"Invitations": updated_invitations}}
             )
 
+            print(users_collection.find_one({"email": inviteEmail}))
+
             return {"message": "Invitations field updated successfully."}
         else:
             return {"message": f"Filename '{filename}' already exists in the Invitations field."}
