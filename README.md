@@ -71,6 +71,8 @@ This will start the backend of the app.
 
 - /uniqueIdCheck - This route updates the invite id belonging to corresponding user in the database.
 
+- /getInvitations - This route checks the database for any invitations present in the database and displays it in the sidebar.
+
 - /save_comment - This route saves comment entered by the invited user in the database. 
 
 
