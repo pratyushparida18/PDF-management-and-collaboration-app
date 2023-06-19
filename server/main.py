@@ -13,7 +13,7 @@ app = FastAPI()
 # Set up CORS
 app.add_middleware( 
     CORSMiddleware,
-    allow_origins=["http://localhost:3000"],  # Replace with your React app URL
+    allow_origins=["https://pdf-management-and-collaboration-app.vercel.app"],  # Replace with your React app URL
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
