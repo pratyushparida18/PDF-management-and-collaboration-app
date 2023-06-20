@@ -19,31 +19,31 @@ const HomePage = ({ email }) => {
       setToggleButtonRight(toggleButtonRightValue);
     };
 
-    handleResize(); // Initialize the toggle button position on component mount
+    handleResize(); 
 
-    window.addEventListener('resize', handleResize); // Add event listener for resize
+    window.addEventListener('resize', handleResize); 
 
     return () => {
-      window.removeEventListener('resize', handleResize); // Cleanup event listener on component unmount
+      window.removeEventListener('resize', handleResize); 
     };
   }, []);
 
   const toggleButtonStyle = {
     position: 'absolute',
-    top: '10px', // Adjust top position as desired
-    right: sidebarOpen ? '400px' : '10px', // Adjust right position as desired
-    width: '30px', // Adjust width as desired
-    height: '30px', // Adjust height as desired
+    top: '10px', 
+    right: sidebarOpen ? '400px' : '10px', 
+    width: '30px', 
+    height: '30px', 
     borderRadius: '50%',
-    backgroundColor: '#000', // Replace with your desired background color
+    backgroundColor: '#000', 
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    color: '#fff', // Replace with your desired text color
-    fontSize: '16px', // Adjust font size as desired
+    color: '#fff', 
+    fontSize: '16px', 
     fontWeight: 'bold',
     textTransform: 'uppercase',
-    transition: 'right 0.3s ease-in-out', // Add transition effect for smooth animation
+    transition: 'right 0.3s ease-in-out',
   };
 
   return (

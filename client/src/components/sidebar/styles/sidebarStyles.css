@@ -62,7 +62,7 @@
   flex-direction: column;
 }
 
-/* Responsive Adjustments */
+/* Mediaqueries */
 @media (max-width: 768px) {
   .sidebar {
     width: 250px;

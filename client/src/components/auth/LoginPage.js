@@ -4,7 +4,7 @@ import axios from 'axios';
 import './styles/LoginPageStyles.css';
 
 
-const API_BASE_URL = 'https://pdf-managementapp.onrender.com'; // Replace with your FastAPI backend URL
+const API_BASE_URL = 'https://pdf-managementapp.onrender.com'; 
 
 const LoginPage = ({ setLoggedIn, setEmailGlobally }) => {
   const navigate = useNavigate();

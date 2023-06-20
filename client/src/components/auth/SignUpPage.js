@@ -4,7 +4,7 @@ import axios from 'axios';
 import './styles/SignUpPageStyles.css';
 
 
-const API_BASE_URL = 'https://pdf-managementapp.onrender.com'; // Replace with your FastAPI backend URL
+const API_BASE_URL = 'https://pdf-managementapp.onrender.com'; 
 
 const SignUpPage = ({ setLoggedIn }) => {
   const navigate = useNavigate();
@@ -21,12 +21,11 @@ const SignUpPage = ({ setLoggedIn }) => {
       axios
         .post(`${API_BASE_URL}/signup?email=${email}&password=${password}`)
         .then((response) => {
-          // Handle successful signup
+          
           setLoggedIn(true);
           navigate('/home');
         })
         .catch((error) => {
-          // Handle signup error
           setError('Error during signup');
           console.error('Signup error:', error);
         });

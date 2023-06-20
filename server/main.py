@@ -5,7 +5,6 @@ import uvicorn
 from auth.routers.auth  import  router as auth_router
 from app.routers.app_routers import router as app_router
 
-#i want to import router
 
 
 app = FastAPI()
@@ -20,11 +19,10 @@ app.add_middleware(
 )
 
 # MongoDB configuration
-MONGO_CONNECTION_STRING = 'mongodb://localhost:27017'  # Replace with your MongoDB connection string
+MONGO_CONNECTION_STRING = 'mongodb://localhost:27017'
 MONGO_DATABASE_NAME = 'spotdraft'
 MONGO_COLLECTION_NAME = 'users'
 
-# JWT configuration
 SECRET_KEY = 'spotdraft'
 ALGORITHM = 'HS256'
 ACCESS_TOKEN_EXPIRE_MINUTES = 30

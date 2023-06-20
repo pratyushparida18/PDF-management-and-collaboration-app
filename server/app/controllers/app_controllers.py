@@ -22,7 +22,6 @@ def get_database():
     client = MongoClient(MONGO_CONNECTION_STRING)
     return client[MONGO_DATABASE_NAME]
 
-# Get the users_collection reference from the MongoDB connection
 database = get_database()
 fs = GridFS(database)
 users_collection = database[MONGO_COLLECTION_NAME]
@@ -33,21 +32,18 @@ def is_pdf(filename):
     _, ext = os.path.splitext(filename)
     return ext.lower() == ".pdf"
 
-# File upload controller
+
 async def upload_file(email: str, file: UploadFile = File(...)):
     if not is_pdf(file.filename):
         return {"error": "Invalid file format. Only PDF files are allowed."}
 
-    # Save the file to GridFS
     file_id = fs.put(file.file, filename=file.filename, metadata={"email": email})
 
-    # Create a document for the file information
     file_document = {
         "file_id": str(file_id),
         "filename": file.filename
     }
 
-    # Update the user document with the file information
     users_collection.update_one(
         {"email": email},
         {"$push": {"files": file_document}}
@@ -94,13 +90,10 @@ async def singleFileData(filename: str, email: str):
 
 async def get_file_preview(file_id: str):
     try:
-        # Retrieve the file from GridFS using the file ID
         file_object = fs.get(ObjectId(file_id))
         
-        # Access the file content
         file_content = file_object.read()
         
-        # Create a streaming response with the file content as a PDF
         return StreamingResponse(io.BytesIO(file_content), media_type="application/pdf")
     
     except Exception as e:
@@ -111,23 +104,18 @@ async def get_file_preview(file_id: str):
 
 
 async def update_invitations(inviteEmail: str, inviteURL: str, filename: str,sender_email: str,file_id: str):
-    # Check if inviteEmail exists in the database
+
     print("inviteURL=",inviteURL)
     existing_record = users_collection.find_one({"email": inviteEmail})
 
     if existing_record:
-        # Get the current Invitations field from the record
         current_invitations = existing_record.get("Invitations", {})
 
-        # Check if the filename already exists in the Invitations field
         if filename not in current_invitations:
-            # Construct the invitation in the desired format
             invitation = {filename: {"inviteURL": inviteURL, "sender_email": sender_email, "file_id": file_id}}
 
-            # Update the Invitations field by merging the new invitation
             updated_invitations = {**current_invitations, **invitation}
 
-            # Update the record with the updated Invitations field
             users_collection.update_one(
                 {"email": inviteEmail},
                 {"$set": {"Invitations": updated_invitations}}
@@ -150,11 +138,10 @@ async def uniqueIdCheck(inviteEmail: str, inviteURL: str):
     unique_id = inviteURL.split("=")[-1]
     print(unique_id)
     if unique_id:
-        # Construct the record in the desired format
         collection = database["Invitations"]
         result = collection.find_one({"inviteEmail": inviteEmail})
+
         if result:
-            # If the record already exists, update the list
             unique_ids = result.get(inviteEmail, [])
             unique_ids.append(unique_id)
             collection.update_one(
@@ -162,7 +149,6 @@ async def uniqueIdCheck(inviteEmail: str, inviteURL: str):
                 {"$set": {inviteEmail: unique_ids}}
             )
         else:
-            # If the record doesn't exist, create a new one
             collection.insert_one({inviteEmail: [unique_id]})
 
         return {"message": "Record created successfully."}
@@ -188,26 +174,21 @@ async def get_invitations(email: str):
 
 
 async def save_comment(email: str, comment: str, filename: str):
-    # Find the record containing the email
     record = users_collection.find_one({"email": email})
     if record is None:
         return {"message": "Record not found for the given email."}
     
-    # Find the record containing the sender_email
     sender_email = record["Invitations"][filename]["sender_email"]
     sender_record = users_collection.find_one({"email": sender_email})
     if sender_record is None:
         return {"message": "Sender record not found."}
     
-    # Find the file record in the files array
     file_record = next((file for file in sender_record["files"] if file["filename"] == filename), None)
     if file_record is None:
         return {"message": "File record not found."}
     
-    # Save the comment in the specified format
     file_record["comments"].append({email: comment})
     
-    # Update the record in the collection
     users_collection.update_one({"email": sender_email}, {"$set": sender_record})
     
     return {"message": "Comment saved successfully."}

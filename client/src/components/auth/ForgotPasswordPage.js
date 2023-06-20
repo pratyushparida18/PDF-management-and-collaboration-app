@@ -22,13 +22,11 @@ const ForgotPasswordPage = () => {
       axios
         .post(`${API_BASE_URL}/resetpassword?email=${email}&password=${password}`)
         .then((response) => {
-          // Handle successful password reset
           
           navigate('/login'); 
           console.log('Password reset successful');
         })
         .catch((error) => {
-          // Handle password reset error
           setError('Error during password reset');
           console.error('Password reset error:', error);
         });

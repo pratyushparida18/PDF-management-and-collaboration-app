@@ -109,7 +109,6 @@ const FilesTable = ({ email }) => {
         console.log("inviteURL=", inviteURL);
         console.log("uniqueId=", uniqueId);
   
-        // Pass inviteURL to invitations route
         axios
           .put(
             `https://pdf-managementapp.onrender.com/invitations?inviteEmail=${inviteEmail}&inviteURL=${inviteLink}&filename=${currentFile.filename}&sender_email=${email}&file_id=${currentFile.file_id}`
@@ -121,7 +120,6 @@ const FilesTable = ({ email }) => {
             console.error("Error updating invitations:", error);
           });
   
-        // Pass inviteURL to uniqueIdCheck route
         axios
           .put(
             `https://pdf-managementapp.onrender.com/uniqueIdCheck?inviteEmail=${inviteEmail}&inviteURL=${inviteLink}`
@@ -137,12 +135,10 @@ const FilesTable = ({ email }) => {
         console.error("Error fetching invite link:", error);
       });
   
-    // Clear the invite email input field
     setInviteEmail("");
     setShowInviteSection(false);
   };
   
-  // CSS styles as a JavaScript object
   const popupStyles = {
     popup: {
       position: "fixed",
@@ -164,8 +160,8 @@ const FilesTable = ({ email }) => {
     },
   };
 
-  const popupRef = useRef(null); // Reference to the popup
-
+  const popupRef = useRef(null); 
+  
   const handleClickOutside = (event) => {
     if (
       popupRef.current &&
@@ -181,10 +177,8 @@ const FilesTable = ({ email }) => {
   };
   
   useEffect(() => {
-    // Event listener to close the popup on outside click
     window.addEventListener("click", handleClickOutside);
   
-    // Clean up the event listener when the component is unmounted
     return () => {
       window.removeEventListener("click", handleClickOutside);
     };

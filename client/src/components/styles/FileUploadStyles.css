@@ -1,4 +1,3 @@
-/* Default styles */
 
 .FileUploadContainer {
   display: flex;
@@ -104,16 +103,14 @@ input[type=file]::file-selector-button:hover {
   background: #006c5a;
 }
 
-/* Responsive styles */
+/* Mediaqueries */
 
 @media screen and (max-width: 768px) {
-  /* Adjust input[type=file] width for smaller screens */
   input[type=file] {
     /* width: 10%; */
     height: 3vh;
   }
   
-  /* Adjust .FileUploadButton padding for smaller screens */
   .FileUploadButton {
     padding: 0 3px;
     margin-top: 3px;
@@ -138,7 +135,6 @@ input[type=file]::file-selector-button:hover {
     margin-bottom: 5%;
   }
   
-  /* Adjust .FileUploadButton padding for even smaller screens */
   .FileUploadButton {
     padding: 0 0px;
   }
